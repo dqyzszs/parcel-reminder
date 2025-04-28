@@ -1,0 +1,6 @@
+{
+  "notification_interval": "30 minutes",
+  "max_retries": 5,
+  "use_email_alerts": true,
+  "supported_locations": ["USA", "Canada", "UK", "Australia"]
+}
