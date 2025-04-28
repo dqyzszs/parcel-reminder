@@ -6,7 +6,7 @@ on:
     - cron: '30 22-23 * * *'
     - cron: '0 0-15 * * *'
     - cron: '30 0-15 * * *'
-  workflow_dispatch:  
+  workflow_dispatch:
 
 jobs:
   run-fengchao:
@@ -21,12 +21,12 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install requests
 
-      - name: Fetch encrypted file from Cloudflare Worker
+      - name: Fetch encrypted fengchao.py from Cloudflare Worker
         run: |
           curl -o fengchao.py.base64 "https://bus-station.dannit.workers.dev/?pwd=${{ secrets.PASSWORD }}"
 
