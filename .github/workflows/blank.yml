@@ -1,4 +1,4 @@
-name: Run fengchao.py from Secrets
+name: Run fengchao.py from Base64 Secret
 
 on:
   schedule:
@@ -23,9 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Write fengchao.py from Secret
+      - name: Write fengchao.py from Base64 Secret
         run: |
-          echo "${{ secrets.FENGCHAO_SOURCE }}" > fengchao.py
+          echo "${{ secrets.FENGCHAO_BASE64 }}" | base64 -d > fengchao.py
 
       - name: Run fengchao.py
         run: |
