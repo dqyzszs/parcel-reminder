@@ -1,0 +1,27 @@
+name: Xiaoce God!
+
+on:
+  schedule:
+    # 每天北京时间8:00运行 (UTC时间0:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'  # 使用你需要的Python版本，如3.10
+
+    - name: Write out cookie
+      run: |
+        echo "${{ secrets.XIAOCE_COOKIES }}" > cookies.dat
+
+    - name: Run Python script
+      run: python xiaoce.py  # 替换为你的脚本路径
