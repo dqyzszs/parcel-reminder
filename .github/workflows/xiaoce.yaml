@@ -19,9 +19,11 @@ jobs:
       with:
         python-version: '3.10'  # 使用你需要的Python版本，如3.10
 
-    - name: Write out cookie
+    - name: Write out cookie and install deps
       run: |
         echo "${{ secrets.XIAOCE_COOKIES }}" > cookies.dat
+        python -m pip install --upgrade pip
+        pip install requests
 
     - name: Run Python script
       run: python xiaoce.py  # 替换为你的脚本路径
